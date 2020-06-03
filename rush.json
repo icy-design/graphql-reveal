@@ -25,6 +25,10 @@
     {
       "packageName": "@graphql-reveal/faker",
       "projectFolder": "packages/faker"
+    },
+    {
+      "packageName": "gateway",
+      "projectFolder": "apps/gateway"
     }
   ]
 }
