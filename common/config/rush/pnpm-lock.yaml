@@ -1,0 +1,438 @@
+dependencies:
+  '@graphql-modules/core': 0.7.17_graphql@15.0.0
+  '@graphql-modules/di': 0.7.17
+  '@graphql-toolkit/common': 0.10.7_graphql@15.0.0
+  '@graphql-toolkit/schema-merging': 0.10.7_graphql@15.0.0
+  '@rush-temp/faker': 'file:projects/faker.tgz'
+  '@types/faker': 4.1.6
+  '@types/graphql': 14.5.0
+  '@types/node': 11.15.14
+  faker: 4.1.0
+  graphql: 15.0.0
+  graphql-tag: 2.10.3_graphql@15.0.0
+  graphql-tools: 5.0.0_graphql@15.0.0
+  moment: 2.24.0
+  typescript: 3.9.3
+lockfileVersion: 5.1
+packages:
+  /@babel/runtime/7.10.2:
+    dependencies:
+      regenerator-runtime: 0.13.5
+    dev: false
+    resolution:
+      integrity: sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
+  /@graphql-modules/core/0.7.17_graphql@15.0.0:
+    dependencies:
+      '@graphql-modules/di': 0.7.17
+      '@graphql-toolkit/common': 0.10.6_graphql@15.0.0
+      '@graphql-toolkit/schema-merging': 0.10.6_graphql@15.0.0
+      apollo-server-caching: 0.5.1
+      deepmerge: 4.2.2
+      graphql: 15.0.0
+      graphql-tools: 5.0.0_graphql@15.0.0
+      tslib: 2.0.0
+    dev: false
+    peerDependencies:
+      graphql: ^14.1.1 || ^15.0.0
+    resolution:
+      integrity: sha512-hGJa1VIsIHTKJ0Hc5gJfFrdhHAF1Vm+LWYeMNC5mPbVd/IZA1wVSpdLDjjliylLI6GnVRu1YreS2gXvFNXPJFA==
+  /@graphql-modules/di/0.7.17:
+    dependencies:
+      events: 3.1.0
+      tslib: 2.0.0
+    dev: false
+    peerDependencies:
+      reflect-metadata: ^0.1.12
+    resolution:
+      integrity: sha512-Lq5sd/3RO+bNb8wVnAg43LWbwrqD57D0AVEqZlqiTwUj1f0mITtQdGMRN7g2sG79U7ngoaQx8VK/IiKh8E1OFQ==
+  /@graphql-toolkit/common/0.10.6_graphql@15.0.0:
+    dependencies:
+      aggregate-error: 3.0.1
+      camel-case: 4.1.1
+      graphql: 15.0.0
+      graphql-tools: 5.0.0_graphql@15.0.0
+      lodash: 4.17.15
+    deprecated: 'GraphQL Toolkit is deprecated and merged into GraphQL Tools, so it will no longer get updates. Use GraphQL Tools instead to stay up-to-date! Check out https://www.graphql-tools.com/docs/migration-from-toolkit for migration and https://the-guild.dev/blog/graphql-tools-v6 for new changes.'
+    dev: false
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-rrH/KPheh/wCZzqUmNayBHd+aNWl/751C4iTL/327TzONdAVrV7ZQOyEkpGLW6YEFWPIlWxNkaBoEALIjCxTGg==
+  /@graphql-toolkit/common/0.10.7_graphql@15.0.0:
+    dependencies:
+      aggregate-error: 3.0.1
+      camel-case: 4.1.1
+      graphql: 15.0.0
+      graphql-tools: 5.0.0_graphql@15.0.0
+      lodash: 4.17.15
+    deprecated: 'GraphQL Toolkit is deprecated and merged into GraphQL Tools, so it will no longer get updates. Use GraphQL Tools instead to stay up-to-date! Check out https://www.graphql-tools.com/docs/migration-from-toolkit for migration and https://the-guild.dev/blog/graphql-tools-v6 for new changes.'
+    dev: false
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-epcJvmIAo+vSEY76F0Dj1Ef6oeewT5pdMe1obHj7LHXN9V22O86aQzwdEEm1iG91qROqSw/apcDnSCMjuVeQVA==
+  /@graphql-toolkit/schema-merging/0.10.6_graphql@15.0.0:
+    dependencies:
+      '@graphql-toolkit/common': 0.10.6_graphql@15.0.0
+      deepmerge: 4.2.2
+      graphql: 15.0.0
+      graphql-tools: 5.0.0_graphql@15.0.0
+      tslib: 1.11.1
+    dev: false
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-BNABgYaNCw4Li3EiH/x7oDpkN+ml3M0SWqjnsW1Pf2NcyfGlv033Bda+O/q4XYtseZ0OOOh52GLXtUgwyPFb8A==
+  /@graphql-toolkit/schema-merging/0.10.7_graphql@15.0.0:
+    dependencies:
+      '@graphql-toolkit/common': 0.10.7_graphql@15.0.0
+      deepmerge: 4.2.2
+      graphql: 15.0.0
+      graphql-tools: 5.0.0_graphql@15.0.0
+      tslib: 1.11.2
+    dev: false
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-VngxJbVdRfXYhdMLhL90pqN+hD/2XTZwhHPGvpWqmGQhT6roc98yN3xyDyrWFYYsuiY4gTexdmrHQ3d7mzitwA==
+  /@types/faker/4.1.6:
+    dev: false
+    resolution:
+      integrity: sha512-Tp4xHecf4UX8VOvSfsL1QlMbOfukGbbAhQbHvPIcX56NmNql4MAamV7E/K5zdYfxlk8FTcxwsaCZTxM79zJzPQ==
+  /@types/graphql/14.5.0:
+    dependencies:
+      graphql: 15.0.0
+    deprecated: 'This is a stub types definition. graphql provides its own type definitions, so you do not need this installed.'
+    dev: false
+    resolution:
+      integrity: sha512-MOkzsEp1Jk5bXuAsHsUi6BVv0zCO+7/2PTiZMXWDSsMXvNU6w/PLMQT2vHn8hy2i0JqojPz1Sz6rsFjHtsU0lA==
+  /@types/node/11.15.14:
+    dev: false
+    resolution:
+      integrity: sha512-5R/ADTMiAxv+4GAwzsupaUO51T1e0UYdPc8StO/t6a+Fv1o2sbY9MWgmP2QxtKGwge8HqTjq058L360ai5RDug==
+  /@wry/equality/0.1.11:
+    dependencies:
+      tslib: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-mwEVBDUVODlsQQ5dfuLUS5/Tf7jqUKyhKYHmVi4fPB6bDMOfWvUPJmKgS1Z7Za/sOI3vzWt4+O7yCiL/70MogA==
+  /aggregate-error/3.0.1:
+    dependencies:
+      clean-stack: 2.2.0
+      indent-string: 4.0.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-quoaXsZ9/BLNae5yiNoUz+Nhkwz83GhWwtYFglcjEQB2NDHCIpApbqXxIFnm4Pq/Nvhrsq5sYJFyohrrxnTGAA==
+  /apollo-link-http-common/0.2.16_graphql@15.0.0:
+    dependencies:
+      apollo-link: 1.2.14_graphql@15.0.0
+      graphql: 15.0.0
+      ts-invariant: 0.4.4
+      tslib: 1.13.0
+    dev: false
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-2tIhOIrnaF4UbQHf7kjeQA/EmSorB7+HyJIIrUjJOKBgnXwuexi8aMecRlqTIDWcyVXCeqLhUnztMa6bOH/jTg==
+  /apollo-link/1.2.14_graphql@15.0.0:
+    dependencies:
+      apollo-utilities: 1.3.4_graphql@15.0.0
+      graphql: 15.0.0
+      ts-invariant: 0.4.4
+      tslib: 1.13.0
+      zen-observable-ts: 0.8.21
+    dev: false
+    peerDependencies:
+      graphql: ^0.11.3 || ^0.12.3 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-p67CMEFP7kOG1JZ0ZkYZwRDa369w5PIjtMjvrQd/HnIV8FRsHRqLqK+oAZQnFa1DDdZtOtHTi+aMIW6EatC2jg==
+  /apollo-server-caching/0.5.1:
+    dependencies:
+      lru-cache: 5.1.1
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-L7LHZ3k9Ao5OSf2WStvQhxdsNVplRQi7kCAPfqf9Z3GBEnQ2uaL0EgO0hSmtVHfXTbk5CTRziMT1Pe87bXrFIw==
+  /apollo-upload-client/13.0.0_graphql@15.0.0:
+    dependencies:
+      '@babel/runtime': 7.10.2
+      apollo-link: 1.2.14_graphql@15.0.0
+      apollo-link-http-common: 0.2.16_graphql@15.0.0
+      extract-files: 8.1.0
+    dev: false
+    engines:
+      node: '>=10'
+    peerDependencies:
+      graphql: '*'
+    resolution:
+      integrity: sha512-lJ9/bk1BH1lD15WhWRha2J3+LrXrPIX5LP5EwiOUHv8PCORp4EUrcujrA3rI5hZeZygrTX8bshcuMdpqpSrvtA==
+  /apollo-utilities/1.3.4_graphql@15.0.0:
+    dependencies:
+      '@wry/equality': 0.1.11
+      fast-json-stable-stringify: 2.1.0
+      graphql: 15.0.0
+      ts-invariant: 0.4.4
+      tslib: 1.13.0
+    dev: false
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-pk2hiWrCXMAy2fRPwEyhvka+mqwzeP60Jr1tRYi5xru+3ko94HI9o6lK0CT33/w4RDlxWchmdhDCrvdr+pHCig==
+  /asynckit/0.4.0:
+    dev: false
+    resolution:
+      integrity: sha1-x57Zf380y48robyXkLzDZkdLS3k=
+  /camel-case/4.1.1:
+    dependencies:
+      pascal-case: 3.1.1
+      tslib: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-7fa2WcG4fYFkclIvEmxBbTvmibwF2/agfEBc6q3lOpVu0A13ltLsA+Hr/8Hp6kp5f+G7hKi6t8lys6XxP+1K6Q==
+  /clean-stack/2.2.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
+  /combined-stream/1.0.8:
+    dependencies:
+      delayed-stream: 1.0.0
+    dev: false
+    engines:
+      node: '>= 0.8'
+    resolution:
+      integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
+  /deepmerge/4.2.2:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
+  /delayed-stream/1.0.0:
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    resolution:
+      integrity: sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
+  /deprecated-decorator/0.1.6:
+    dev: false
+    resolution:
+      integrity: sha1-AJZjF7ehL+kvPMgx91g68ym4bDc=
+  /events/3.1.0:
+    dev: false
+    engines:
+      node: '>=0.8.x'
+    resolution:
+      integrity: sha512-Rv+u8MLHNOdMjTAFeT3nCjHn2aGlx435FP/sDHNaRhDEMwyI/aB22Kj2qIN8R0cw3z28psEQLYwxVKLsKrMgWg==
+  /extract-files/8.1.0:
+    dev: false
+    engines:
+      node: 10 - 12 || >= 13.7
+    resolution:
+      integrity: sha512-PTGtfthZK79WUMk+avLmwx3NGdU8+iVFXC2NMGxKsn0MnihOG2lvumj+AZo8CTwTrwjXDgZ5tztbRlEdRjBonQ==
+  /faker/4.1.0:
+    dev: false
+    resolution:
+      integrity: sha1-HkW7vsxndLPBlfrSg1EJxtdIzD8=
+  /fast-json-stable-stringify/2.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
+  /form-data/3.0.0:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.27
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-CKMFDglpbMi6PyN+brwB9Q/GOw0eAnsrEZDgcsH5Krhz5Od/haKHAX0NmQfha2zPPz0JpWzA7GJHGSnvCRLWsg==
+  /graphql-tag/2.10.3_graphql@15.0.0:
+    dependencies:
+      graphql: 15.0.0
+    dev: false
+    peerDependencies:
+      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+    resolution:
+      integrity: sha512-4FOv3ZKfA4WdOKJeHdz6B3F/vxBLSgmBcGeAFPf4n1F64ltJUvOOerNj0rsJxONQGdhUMynQIvd6LzB+1J5oKA==
+  /graphql-tools/5.0.0_graphql@15.0.0:
+    dependencies:
+      apollo-link: 1.2.14_graphql@15.0.0
+      apollo-upload-client: 13.0.0_graphql@15.0.0
+      deprecated-decorator: 0.1.6
+      form-data: 3.0.0
+      graphql: 15.0.0
+      iterall: 1.3.0
+      node-fetch: 2.6.0
+      tslib: 1.13.0
+      uuid: 7.0.3
+    dev: false
+    peerDependencies:
+      graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    resolution:
+      integrity: sha512-5zn3vtn//382b7G3Wzz3d5q/sh+f7tVrnxeuhTMTJ7pWJijNqLxH7VEzv8VwXCq19zAzHYEosFHfXiK7qzvk7w==
+  /graphql/15.0.0:
+    dev: false
+    engines:
+      node: '>= 10.x'
+    resolution:
+      integrity: sha512-ZyVO1xIF9F+4cxfkdhOJINM+51B06Friuv4M66W7HzUOeFd+vNzUn4vtswYINPi6sysjf1M2Ri/rwZALqgwbaQ==
+  /indent-string/4.0.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==
+  /iterall/1.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==
+  /lodash/4.17.15:
+    dev: false
+    resolution:
+      integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  /lower-case/2.0.1:
+    dependencies:
+      tslib: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-LiWgfDLLb1dwbFQZsSglpRj+1ctGnayXz3Uv0/WO8n558JycT5fg6zkNcnW0G68Nn0aEldTFeEfmjCfmqry/rQ==
+  /lru-cache/5.1.1:
+    dependencies:
+      yallist: 3.1.1
+    dev: false
+    resolution:
+      integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
+  /mime-db/1.44.0:
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
+  /mime-types/2.1.27:
+    dependencies:
+      mime-db: 1.44.0
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==
+  /moment/2.24.0:
+    dev: false
+    resolution:
+      integrity: sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+  /no-case/3.0.3:
+    dependencies:
+      lower-case: 2.0.1
+      tslib: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-ehY/mVQCf9BL0gKfsJBvFJen+1V//U+0HQMPrWct40ixE4jnv0bfvxDbWtAHL9EcaPEOJHVVYKoQn1TlZUB8Tw==
+  /node-fetch/2.6.0:
+    dev: false
+    engines:
+      node: 4.x || >=6.0.0
+    resolution:
+      integrity: sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  /pascal-case/3.1.1:
+    dependencies:
+      no-case: 3.0.3
+      tslib: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-XIeHKqIrsquVTQL2crjq3NfJUxmdLasn3TYOU0VBM+UX2a6ztAWBlJQBePLGY7VHW8+2dRadeIPK5+KImwTxQA==
+  /regenerator-runtime/0.13.5:
+    dev: false
+    resolution:
+      integrity: sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
+  /ts-invariant/0.4.4:
+    dependencies:
+      tslib: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha512-uEtWkFM/sdZvRNNDL3Ehu4WVpwaulhwQszV8mrtcdeE8nN00BV9mAmQ88RkrBhFgl9gMgvjJLAQcZbnPXI9mlA==
+  /tslib/1.11.1:
+    dev: false
+    resolution:
+      integrity: sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
+  /tslib/1.11.2:
+    dev: false
+    resolution:
+      integrity: sha512-tTSkux6IGPnUGUd1XAZHcpu85MOkIl5zX49pO+jfsie3eP0B6pyhOlLXm3cAC6T7s+euSDDUUV+Acop5WmtkVg==
+  /tslib/1.13.0:
+    dev: false
+    resolution:
+      integrity: sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
+  /tslib/2.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-lTqkx847PI7xEDYJntxZH89L2/aXInsyF2luSafe/+0fHOMjlBNXdH6th7f70qxLDhul7KZK0zC8V5ZIyHl0/g==
+  /typescript/3.9.3:
+    dev: false
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
+  /uuid/7.0.3:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
+  /yallist/3.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
+  /zen-observable-ts/0.8.21:
+    dependencies:
+      tslib: 1.13.0
+      zen-observable: 0.8.15
+    dev: false
+    resolution:
+      integrity: sha512-Yj3yXweRc8LdRMrCC8nIc4kkjWecPAUVh0TI0OUrWXx6aX790vLcDlWca6I4vsyCGH3LpWxq0dJRcMOFoVqmeg==
+  /zen-observable/0.8.15:
+    dev: false
+    resolution:
+      integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
+  'file:projects/faker.tgz':
+    dependencies:
+      '@graphql-modules/core': 0.7.17_graphql@15.0.0
+      '@graphql-modules/di': 0.7.17
+      '@graphql-toolkit/common': 0.10.7_graphql@15.0.0
+      '@graphql-toolkit/schema-merging': 0.10.7_graphql@15.0.0
+      '@types/faker': 4.1.6
+      '@types/graphql': 14.5.0
+      '@types/node': 11.15.14
+      faker: 4.1.0
+      graphql: 15.0.0
+      graphql-tag: 2.10.3_graphql@15.0.0
+      graphql-tools: 5.0.0_graphql@15.0.0
+      moment: 2.24.0
+      typescript: 3.9.3
+    dev: false
+    name: '@rush-temp/faker'
+    resolution:
+      integrity: sha512-vAJ5dvD0GDBoPfJsVssqdSDpNFFw6t8EFZHCb1ZNQgwG4vraAFbcnppHvX7JLvbkAPkuMX9Wx2K7bd+ENbJ4sA==
+      tarball: 'file:projects/faker.tgz'
+    version: 0.0.0
+registry: ''
+specifiers:
+  '@graphql-modules/core': ^0.7.17
+  '@graphql-modules/di': ^0.7.17
+  '@graphql-toolkit/common': 0.10.7
+  '@graphql-toolkit/schema-merging': 0.10.7
+  '@rush-temp/faker': 'file:./projects/faker.tgz'
+  '@types/faker': 4.1.6
+  '@types/graphql': ^14.2.3
+  '@types/node': ^11.9.4
+  faker: 4.1.0
+  graphql: ^14.1.1 || ^15.0.0
+  graphql-tag: 2.10.3
+  graphql-tools: 5.0.0
+  moment: 2.24.0
+  typescript: 3.9.3

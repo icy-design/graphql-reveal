@@ -1,0 +1,45 @@
+{
+  "name": "@graphql-reveal/faker",
+  "version": "0.0.1",
+  "description": "Mock or extend your GraphQL Modules with faked data",
+  "repository": "https://github.com/icy-design/graphql-reveal.git",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "prebuild": "pnpm clean",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@graphql-toolkit/common": "0.10.7",
+    "@graphql-toolkit/schema-merging": "0.10.7",
+    "faker": "4.1.0",
+    "graphql-tools": "5.0.0",
+    "moment": "2.24.0",
+  },
+  "peerDependencies": {
+    "graphql": "^14.1.1 || ^15.0.0",
+    "@graphql-modules/core": "^0.7.17",
+    "@graphql-modules/di": "^0.7.17"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.3",
+    "@types/node": "^11.9.4",
+    "@types/faker": "4.1.6",
+    "graphql-tag": "2.10.3",
+    "typescript": "3.9.3"
+  },
+  "sideEffects": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "typescript": {
+    "definition": "dist/index.d.ts"
+  },
+  "buildOptions": {
+    "input": "./src/index.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
+

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.23.5",
+  "pnpmVersion": "4.12.5",
+  "pnpmOptions": {
+  },
+  "nodeSupportedVersionRange": ">=10.13.0 <11.0.0 || >=12.0.0 <13.0.0",
+  "projectFolderMinDepth": 2,
+  "projectFolderMaxDepth": 2,
+  "gitPolicy": {
+  },
+  "repository": {
+    "url": "https://github.com/icy-design/graphql-reveal"
+  },
+  "eventHooks": {
+    "preRushInstall": [
+    ],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "variants": [
+  ],
+  "projects": [
+    {
+      "packageName": "@graphql-reveal/faker",
+      "projectFolder": "packages/faker"
+    }
+  ]
+}
