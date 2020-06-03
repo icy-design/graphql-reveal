@@ -47,7 +47,6 @@ export const fakeTypeResolver: GraphQLTypeResolver<unknown, unknown> = async (
     info,
     abstractType,
   );
-  console.log("fakeTypeResolver", defaultResolved);
   if (defaultResolved != null) {
     return defaultResolved;
   }
