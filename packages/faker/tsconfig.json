@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "target": "es2018",
     "lib": [
-      "es2018",
-      "esnext.asynciterable"
+      "es6",
+      "esnext",
+      "es2015",
+      "es2018"
     ],
-    "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -14,6 +16,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "inlineSourceMap": true,
+    "declaration": true,
     "esModuleInterop": true
   },
   "include": [
