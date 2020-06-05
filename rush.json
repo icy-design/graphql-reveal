@@ -29,6 +29,10 @@
     {
       "packageName": "fake-example",
       "projectFolder": "apps/fake-example"
+    },
+    {
+      "packageName": "sequel-example",
+      "projectFolder": "apps/sequel-example"
     }
   ]
 }

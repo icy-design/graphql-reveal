@@ -1,0 +1,25 @@
+type Query {
+  sequelEmployee(id: ID): SequelEmployee
+  sequelCompany(id: ID): SequelCompany
+  sequelCompanies: [SequelCompany!]
+}
+
+type Mutation {
+  addSequelEmployee(firstName: String!, lastName: String!): SequelEmployee!
+}
+
+type SequelCompany {
+  id: ID!
+  name: String
+  industry: String
+  employees: [SequelEmployee!]
+}
+
+type SequelEmployee {
+  id: ID!
+  firstName: String
+  lastName: String
+  address: String
+  subordinates: [SequelEmployee!]
+  company: SequelCompany
+}

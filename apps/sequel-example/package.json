@@ -1,7 +1,7 @@
 {
-  "name": "gateway",
+  "name": "sequel-example",
   "version": "0.0.1",
-  "description": "Simple graphql server to demonstrate usages of graphql-reveal with Graphql Modules.",
+  "description": "Graphql CRUD server to demonstrate usages of @graphql-reveal/sequel with Graphql Modules.",
   "author": "forafish",
   "repository": "git+https://github.com/icy-design/graphql-reveal.git",
   "license": "MIT",
@@ -17,7 +17,6 @@
   "dependencies": {
     "@graphql-modules/core": "^0.7.17",
     "@graphql-modules/di": "^0.7.17",
-    "@graphql-reveal/faker": "^0.0.2",
     "@grpc/proto-loader": "^0.5.3",
     "apollo-datasource-grpc": "^1.0.0",
     "apollo-datasource-rest": "^0.6.11",

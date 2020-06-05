@@ -10,7 +10,7 @@ import cookie from 'cookie';
 const logger = getLogger('index');
 logger.level = 'debug';
 
-const PORT = process.env['PORT'] || 5000;
+const PORT = process.env['PORT'] || 5002;
 const GRAPHQL_PATH = '/graphql';
 const PLAYGROUND_PATH = '/playground';
 
