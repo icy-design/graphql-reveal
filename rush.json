@@ -27,8 +27,8 @@
       "projectFolder": "packages/faker"
     },
     {
-      "packageName": "gateway",
-      "projectFolder": "apps/gateway"
+      "packageName": "fake-example",
+      "projectFolder": "apps/fake-example"
     }
   ]
 }

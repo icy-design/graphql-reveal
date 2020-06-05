@@ -1,9 +1,9 @@
-const sampleQueries = `mutation createEmployee($firtName: String!, $lastName: String!) {
-  createEmployee(firtName: $firtName, lastName: $lastName)
+const sampleQueries = `mutation createFakeEmployee($firtName: String!, $lastName: String!) {
+  createFakeEmployee(firtName: $firtName, lastName: $lastName)
 }
 
-query getCompany {
-  company(id: 1) {
+query getFakeCompany {
+  fakeCompany(id: 1) {
     id
     name
     employees {
@@ -12,7 +12,7 @@ query getCompany {
       lastName
     }
   }
-  employee(id: 2) {
+  fakeEmployee(id: 2) {
     id
     firstName
     lastName

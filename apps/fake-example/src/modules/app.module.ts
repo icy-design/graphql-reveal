@@ -1,13 +1,13 @@
 import { GraphQLModule } from '@graphql-modules/core';
 import { SchemaDirectiveVisitor, makeExecutableSchema } from 'graphql-tools';
 import { FakeDirectiveModule } from '@graphql-reveal/faker';
-import { SampleModule } from './sample';
+import { FakeExampleModule } from './example';
 
 const appModule:any = new GraphQLModule({
   name: 'app',
   imports: [
     FakeDirectiveModule,
-    SampleModule
+    FakeExampleModule
   ],
 });
 

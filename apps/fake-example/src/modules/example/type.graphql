@@ -1,25 +1,25 @@
 type Query {
-  employee(id: ID): Employee
-  company(id: ID): Company
-  companies: [Company!]
+  fakeEmployee(id: ID): FakeEmployee
+  fakeCompany(id: ID): FakeCompany
+  fakeCompanies: [FakeCompany!]
 }
 
 type Mutation {
-  addEmployee(firstName: String!, lastName: String!): Employee!
+  addFakeEmployee(firstName: String!, lastName: String!): FakeEmployee!
 }
 
-type Company {
+type FakeCompany {
   id: ID @fake(type: mobileNumber)
   name: String @fake(type:companyName)
   industry: String @examples(values: ["IT", "Manufacturing", "Medicine", "Media"])
-  employees: [Employee!] @listLength(min: 5, max: 10)
+  employees: [FakeEmployee!] @listLength(min: 5, max: 10)
 }
 
-type Employee {
+type FakeEmployee {
   id: ID @fake(type: mobileNumber)
   firstName: String @fake(type: firstName, locale:en_CA)
   lastName: String @fake(type: lastName, locale:en_CA)
   address: String @fake(type:streetAddress, options: { useFullAddress: true })
-  subordinates: [Employee!] @listLength(min: 0, max: 3)
-  company: Company
+  subordinates: [FakeEmployee!] @listLength(min: 0, max: 3)
+  company: FakeCompany
 }
