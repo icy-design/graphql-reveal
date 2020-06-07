@@ -1,6 +1,10 @@
 import 'graphql-import-node';
 import { GraphQLModule } from '@graphql-modules/core';
+import { SequelDirectiveModule, buildSequelResolvers } from '@graphql-reveal/sequel';
+import { Sequelize } from 'sequelize';
 import * as typeDefs from './type.graphql';
+
+const sequelize = new Sequelize('sqlite::memory:')
 
 const resolvers = {
   Query: {
@@ -21,9 +25,26 @@ const resolvers = {
   },
 };
 
+export const crud = (db) => (next) => async (root, args, context, info) => {
+  const prevResult = await next(root, args, context, info);
+  console.log('sequelize models', 
+  db.models);
+  console.log('info operation:', info.operation);
+  if (info.operation.name.value === 'get')
+  return '!!!' + prevResult;
+};
+
+
+
 export const SequelExampleModule = new GraphQLModule({
   name: 'SequelExample',
-  imports: [],
+  imports: [
+    SequelDirectiveModule.forRoot({ sequelize })
+  ],
   typeDefs,
-  resolvers
+  resolvers,
+  resolversComposition: buildSequelResolvers({ typeDefs, sequelize })
+  // resolversComposition: {
+  //   'Query.*': [ crud(sequelize) ],
+  // },
 });

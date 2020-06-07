@@ -11,12 +11,13 @@
     "clean": "rm -rf dist",
     "prebuild": "pnpm run clean",
     "build": "tsc && copyfiles -u 1 src/**/*.graphql dist",
-    "watch-ts": "tsc-watch --onSuccess 'copyfiles -u 1 src/**/*.graphql dist'",
+    "watch": "tsc-watch --onSuccess 'copyfiles -u 1 src/**/*.graphql dist'",
     "nodemon": "nodemon --exec 'node -r dotenv/config' --inspect=9239 --delay 1 --ext ts --watch src dist/index.js"
   },
   "dependencies": {
     "@graphql-modules/core": "^0.7.17",
     "@graphql-modules/di": "^0.7.17",
+    "@graphql-reveal/sequel": "~0.0.1",
     "@grpc/proto-loader": "^0.5.3",
     "apollo-datasource-grpc": "^1.0.0",
     "apollo-datasource-rest": "^0.6.11",
@@ -31,6 +32,8 @@
     "graphql-tools": "~6.0.7",
     "log4js": "^4.5.1",
     "reflect-metadata": "^0.1.13",
+    "sequelize": "~5.21.12",
+    "sqlite3": "~4.2.0",
     "typescript": "^3.6.4"
   },
   "devDependencies": {

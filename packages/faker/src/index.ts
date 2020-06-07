@@ -16,7 +16,7 @@ class FakeDirective extends SchemaDirectiveVisitor {
   }
 }
 
-export const FakeDirectiveModule = new GraphQLModule({
+export const FakeDirectiveModule:GraphQLModule = new GraphQLModule({
   typeDefs: fakeDefinition,
   schemaDirectives: {
     fake: FakeDirective,

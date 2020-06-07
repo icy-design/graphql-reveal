@@ -8,14 +8,14 @@ type Mutation {
   addSequelEmployee(firstName: String!, lastName: String!): SequelEmployee!
 }
 
-type SequelCompany {
+type SequelCompany @model(name: "company") {
   id: ID!
   name: String
   industry: String
   employees: [SequelEmployee!]
 }
 
-type SequelEmployee {
+type SequelEmployee @model(name: "employee") {
   id: ID!
   firstName: String
   lastName: String

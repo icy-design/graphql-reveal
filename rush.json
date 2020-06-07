@@ -27,6 +27,10 @@
       "projectFolder": "packages/faker"
     },
     {
+      "packageName": "@graphql-reveal/sequel",
+      "projectFolder": "packages/sequel"
+    },
+    {
       "packageName": "fake-example",
       "projectFolder": "apps/fake-example"
     },
