@@ -22,7 +22,8 @@ dependencies:
   graphql: 14.6.0
   graphql-import-node: 0.0.4_graphql@14.6.0
   graphql-playground-middleware-express: 1.7.15_express@4.17.1
-  graphql-sequelize: 9.4.0_graphql@14.6.0+sequelize@5.21.12
+  graphql-relay: 0.6.0_graphql@14.6.0
+  graphql-sequelize: 9.4.0_8ba3af34c00c89929bef54a4b6184412
   graphql-tag: 2.10.3_graphql@14.6.0
   graphql-tools: 6.0.7_graphql@14.6.0
   log4js: 4.5.1
@@ -2844,10 +2845,20 @@ packages:
       express: ^4.16.2
     resolution:
       integrity: sha512-Q7bjD1SMT5fiXMgUqstNzkYk9+csbuu5K7uOga9tJlA8x9gOVsSmmIfLi0tjPOrPd4m8icPnKncR73oNA22d5g==
-  /graphql-sequelize/9.4.0_graphql@14.6.0+sequelize@5.21.12:
+  /graphql-relay/0.6.0_graphql@14.6.0:
+    dependencies:
+      graphql: 14.6.0
+      prettier: 1.19.1
+    dev: false
+    peerDependencies:
+      graphql: ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+    resolution:
+      integrity: sha512-OVDi6C9/qOT542Q3KxZdXja3NrDvqzbihn1B44PH8P/c5s0Q90RyQwT6guhGqXqbYEH6zbeLJWjQqiYvcg2vVw==
+  /graphql-sequelize/9.4.0_8ba3af34c00c89929bef54a4b6184412:
     dependencies:
       bluebird: 3.7.2
       graphql: 14.6.0
+      graphql-relay: 0.6.0_graphql@14.6.0
       invariant: 2.2.1
       lodash: 4.17.15
       sequelize: 5.21.12
@@ -4183,6 +4194,13 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
+  /prettier/1.19.1:
+    dev: false
+    engines:
+      node: '>=4'
+    hasBin: true
+    resolution:
+      integrity: sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
   /process-nextick-args/2.0.1:
     dev: false
     resolution:
@@ -5572,7 +5590,8 @@ packages:
       '@types/node': 11.15.14
       camelcase: 6.0.0
       graphql: 14.6.0
-      graphql-sequelize: 9.4.0_graphql@14.6.0+sequelize@5.21.12
+      graphql-relay: 0.6.0_graphql@14.6.0
+      graphql-sequelize: 9.4.0_8ba3af34c00c89929bef54a4b6184412
       graphql-tag: 2.10.3_graphql@14.6.0
       graphql-tools: 6.0.7_graphql@14.6.0
       pluralize: 8.0.0
@@ -5586,7 +5605,7 @@ packages:
     peerDependencies:
       reflect-metadata: '*'
     resolution:
-      integrity: sha512-I4vCRyZoI13D7bXnXU/qZyNACJnwlFfo/i7/rD83XXfBJUuJSviLM83KBOgW1d/wS1cXU9k5jaq2FFfNFWb79Q==
+      integrity: sha512-UkxzMwXfQh52ixQGPLZni9Rxq/gahqorh2Ya44jTEcmY3jmU6mMeYOfSFCxeQei08o9QSkyw5lmbhO0AfWzE5Q==
       tarball: 'file:projects/sequel.tgz'
     version: 0.0.0
 registry: ''
@@ -5614,6 +5633,7 @@ specifiers:
   graphql: ^14.5.8
   graphql-import-node: 0.0.4
   graphql-playground-middleware-express: ~1.7.15
+  graphql-relay: ~0.6.0
   graphql-sequelize: ~9.4.0
   graphql-tag: 2.10.3
   graphql-tools: ~6.0.7

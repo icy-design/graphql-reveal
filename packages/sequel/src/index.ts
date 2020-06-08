@@ -4,7 +4,7 @@ import { SchemaDirectiveVisitor } from 'graphql-tools';
 import { Sequelize } from 'sequelize';
 import { sequelDefinition } from './sequle_definition';
 
-export { buildSequelResolvers } from './builder/schema';
+export * from './builder/schema';
 
 class SequelDirective extends SchemaDirectiveVisitor {
 
@@ -40,6 +40,6 @@ export interface ISequelModuleConfig {
 export const SequelDirectiveModule:GraphQLModule = new GraphQLModule<ISequelModuleConfig>({
   typeDefs: sequelDefinition,
   schemaDirectives: {
-    model: SequelDirective,
+    model: SequelDirective
   }
 });

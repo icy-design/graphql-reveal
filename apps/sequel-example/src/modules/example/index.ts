@@ -3,6 +3,7 @@ import { GraphQLModule } from '@graphql-modules/core';
 import { SequelDirectiveModule, buildSequelResolvers } from '@graphql-reveal/sequel';
 import { Sequelize } from 'sequelize';
 import * as typeDefs from './type.graphql';
+import { seedData } from './seed';
 
 const sequelize = new Sequelize('sqlite::memory:')
 
@@ -25,16 +26,16 @@ const resolvers = {
   },
 };
 
-export const crud = (db) => (next) => async (root, args, context, info) => {
-  const prevResult = await next(root, args, context, info);
-  console.log('sequelize models', 
-  db.models);
-  console.log('info operation:', info.operation);
-  if (info.operation.name.value === 'get')
-  return '!!!' + prevResult;
-};
-
-
+function buildCompositionResolver() {
+  const resolvers = buildSequelResolvers({ typeDefs, sequelize });
+  sequelize.sync().then(() => {
+    const queryInterface = sequelize.getQueryInterface();
+    for (const key of Object.keys(seedData)) {
+      queryInterface.bulkInsert(key, seedData[key]);
+    }
+  });
+  return resolvers;
+}
 
 export const SequelExampleModule = new GraphQLModule({
   name: 'SequelExample',
@@ -43,8 +44,5 @@ export const SequelExampleModule = new GraphQLModule({
   ],
   typeDefs,
   resolvers,
-  resolversComposition: buildSequelResolvers({ typeDefs, sequelize })
-  // resolversComposition: {
-  //   'Query.*': [ crud(sequelize) ],
-  // },
+  resolversComposition: buildCompositionResolver()
 });

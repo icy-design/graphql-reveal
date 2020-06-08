@@ -1,45 +1,39 @@
 import { DataTypes } from 'sequelize';
 import { formatFieldName } from '../utils/build_utils';
+import { FieldUsage } from './directives';
 
-const transformColumnToType = column => {
-  const c = column.toLowerCase();
-
-  if (c.includes('int')) {
-    return DataTypes.INTEGER;
+const parseFieldType = type => {
+  const c = type.toLowerCase();
+  switch (c) {
+    case 'id':
+      return DataTypes.STRING;
+    case "int":
+      return DataTypes.INTEGER;
+    case 'float':
+      return DataTypes.DECIMAL;
+    case 'string':
+      return DataTypes.TEXT;
+    case 'boolean':
+      return DataTypes.BOOLEAN;
+    case 'object':
+      return DataTypes.JSON;
+    default:
+      return DataTypes.BLOB;
   }
-
-  if (c.includes('char') || c === 'clob' || c === 'text') {
-    return DataTypes.TEXT;
-  }
-
-  if (c.includes('double') || c === 'real' || c === 'float') {
-    return DataTypes.REAL;
-  }
-
-  if (
-    c.includes('decimal') ||
-    c.includes('numeric') ||
-    c === 'boolean' ||
-    c === 'date' ||
-    c === 'datetime'
-  ) {
-    return DataTypes.DECIMAL;
-  }
-
-  return DataTypes.BLOB;
 };
 
-export default columns => {
-  return columns.reduce((acc, column) => {
-    acc[formatFieldName(column.name)] = {
-      type: transformColumnToType(column.type),
-      primaryKey: column.pk === 1,
-      field: column.name,
-      allowNull: column.notnull === 0 || column.dflt_value !== null,
-      defaultValue: column.dflt_value,
-      autoIncrement: column.type === 'INTEGER' && column.pk === 1,
+export function createDefinitions(fields: FieldUsage[]) {
+  return fields.reduce((acc, field) => {
+    const directives = field.directives || [];
+    const primaryKey = directives.some(o => o.name === 'primary');
+    acc[formatFieldName(field.name)] = {
+      type: parseFieldType(field.type),
+      primaryKey: primaryKey,
+      field: field.name,
+      allowNull: !field.nonNull,
+      // defaultValue: directives.find(o => o.name === 'default'),
+      autoIncrement: field.type === 'INTEGER' && primaryKey,
     };
-
     return acc;
   }, {});
 };

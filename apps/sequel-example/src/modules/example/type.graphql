@@ -9,17 +9,17 @@ type Mutation {
 }
 
 type SequelCompany @model(name: "company") {
-  id: ID!
+  id: ID! @primary
   name: String
   industry: String
-  employees: [SequelEmployee!]
+  employees: [SequelEmployee] @hasMany
 }
 
 type SequelEmployee @model(name: "employee") {
-  id: ID!
+  id: ID! @primary
   firstName: String
   lastName: String
-  address: String
-  subordinates: [SequelEmployee!]
-  company: SequelCompany
+  address: String @default(value: "")
+  subordinates: [SequelEmployee] @hasMany
+  company: SequelCompany @belongsTo
 }
