@@ -13,6 +13,7 @@ dependencies:
   apollo-server: 2.14.1_graphql@14.6.0
   apollo-server-express: 2.14.1_graphql@14.6.0
   camelcase: 6.0.0
+  case: 1.6.3
   cookie: 0.4.1
   cookie-parser: 1.4.5
   copyfiles: 2.3.0
@@ -1815,6 +1816,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
+  /case/1.6.3:
+    dev: false
+    engines:
+      node: '>= 0.8.0'
+    resolution:
+      integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
   /chalk/2.4.2:
     dependencies:
       ansi-styles: 3.2.1
@@ -5589,6 +5596,7 @@ packages:
       '@graphql-modules/di': 0.7.17_reflect-metadata@0.1.13
       '@types/node': 11.15.14
       camelcase: 6.0.0
+      case: 1.6.3
       graphql: 14.6.0
       graphql-relay: 0.6.0_graphql@14.6.0
       graphql-sequelize: 9.4.0_8ba3af34c00c89929bef54a4b6184412
@@ -5605,7 +5613,7 @@ packages:
     peerDependencies:
       reflect-metadata: '*'
     resolution:
-      integrity: sha512-UkxzMwXfQh52ixQGPLZni9Rxq/gahqorh2Ya44jTEcmY3jmU6mMeYOfSFCxeQei08o9QSkyw5lmbhO0AfWzE5Q==
+      integrity: sha512-4hw8PRqpxnkSQo4J7WchtTTj9U5Gx/0jd94FLtkdV4aQXnX5EWmOZ8BNAvrezC6MXpF46ht0vPXa8268VOVv7A==
       tarball: 'file:projects/sequel.tgz'
     version: 0.0.0
 registry: ''
@@ -5624,6 +5632,7 @@ specifiers:
   apollo-server: ^2.9.15
   apollo-server-express: ~2.14.1
   camelcase: ~6.0.0
+  case: ~1.6.3
   cookie: ^0.4.0
   cookie-parser: ^1.4.4
   copyfiles: ^2.1.1

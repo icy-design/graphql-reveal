@@ -1,6 +1,13 @@
 import { DataTypes } from 'sequelize';
-import { formatFieldName } from '../utils/build_utils';
-import { FieldUsage } from './directives';
+import { getForeignKey } from '../utils';
+import { FieldUsage, TypeToUsages } from './directives';
+
+export interface ModelAssociation {
+  source: string;
+  target: string;
+  type: string;
+  options?: any;
+}
 
 const parseFieldType = type => {
   const c = type.toLowerCase();
@@ -18,22 +25,62 @@ const parseFieldType = type => {
     case 'object':
       return DataTypes.JSON;
     default:
-      return DataTypes.BLOB;
+      return null;
   }
 };
 
-export function createDefinitions(fields: FieldUsage[]) {
+export function createAssociations(typeUsages: TypeToUsages, formatFieldName): ModelAssociation[] {
+  let associations:ModelAssociation[] = [];
+  for (const typeName in typeUsages) {
+    const type = typeUsages[typeName];
+    for (const field of type.fields) {
+      const directives = field.directives || [];
+      for (const directive of directives) {
+        switch (directive.name) {
+          case 'belongsTo':
+            associations.push({
+              source: typeName,
+              target: field.type,
+              type: 'belongsTo',
+              options: {
+                foreignKey: formatFieldName(getForeignKey(field.name)),
+              },
+            });
+            break;
+          case 'hasOne':
+          case 'hasMany':
+            const from = type.directives.find(o => o.name === 'model')?.args['name'] || typeName;
+            associations.push({
+              source: typeName,
+              target: field.type,
+              type: 'hasMany',
+              options: {
+                foreignKey: formatFieldName(getForeignKey(from)),
+              },
+            });
+            break;
+        }
+      }
+    }
+  }
+  return associations;
+}
+
+export function createDefinitions(fields: FieldUsage[], formatFieldName) {
   return fields.reduce((acc, field) => {
     const directives = field.directives || [];
     const primaryKey = directives.some(o => o.name === 'primary');
-    acc[formatFieldName(field.name)] = {
-      type: parseFieldType(field.type),
-      primaryKey: primaryKey,
-      field: field.name,
-      allowNull: !field.nonNull,
-      // defaultValue: directives.find(o => o.name === 'default'),
-      autoIncrement: field.type === 'INTEGER' && primaryKey,
-    };
+    const fieldType = parseFieldType(field.type);
+    if (fieldType) {
+      acc[formatFieldName(field.name)] = {
+        type: fieldType,
+        primaryKey: primaryKey,
+        field: field.name,
+        allowNull: !field.nonNull,
+        // defaultValue: directives.find(o => o.name === 'default'),
+        autoIncrement: fieldType === DataTypes.INTEGER && primaryKey,
+      };
+    }
     return acc;
   }, {});
 };

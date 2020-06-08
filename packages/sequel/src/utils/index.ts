@@ -22,24 +22,11 @@ export const pascalCase = string => {
   return cameled.substr(0, 1).toUpperCase() + cameled.substr(1);
 };
 
-export const findModelKey = (key, models) => {
-  if (models[key]) {
+export const getForeignKey = (key: string, pattern = 'Id') => {
+  key = key.toLowerCase();
+  if (key.endsWith(pattern)) {
     return key;
   }
-
-  const pluralKey = plural(key);
-
-  if (models[pluralKey]) {
-    return pluralKey;
-  }
-
   const singularKey = singular(key);
-
-  if (models[singularKey]) {
-    return singularKey;
-  }
-
-  throw Error(`Model with ${key} does not exist`);
+  return `${singularKey}${pattern}`;
 };
-
-export const formatFieldName = camelcase;

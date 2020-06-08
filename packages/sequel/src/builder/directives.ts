@@ -108,3 +108,13 @@ export function getTypesWithDirectives(documentNode: DocumentNode): TypeToUsages
 
   return result;
 }
+
+export function getTypesWithDirective(documentNode: DocumentNode, direct: string): TypeToUsages {
+  const typeUsages = getTypesWithDirectives(documentNode);
+  return Object.keys(typeUsages).reduce((result, key) => {
+    if (typeUsages[key].directives.some(o => o.name === direct)) {
+      result[key] = typeUsages[key];
+    }
+    return result;
+  }, {});
+}

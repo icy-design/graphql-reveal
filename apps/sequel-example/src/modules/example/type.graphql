@@ -1,7 +1,13 @@
 type Query {
+  findSequelEmployeesByIds(ids: [ID!]): [SequelEmployee]
+  findSequelEmployees(next: ID, limit: Int): [SequelEmployee]
   sequelEmployee(id: ID): SequelEmployee
+  sequelEmployees: [SequelEmployee]
+
+  findSequelCompaniesByIds(ids: [ID!]): [SequelCompany]
+  findSequelCompanies(next: ID, limit: Int): [SequelCompany]
   sequelCompany(id: ID): SequelCompany
-  sequelCompanies: [SequelCompany!]
+  sequelCompanies: [SequelCompany]
 }
 
 type Mutation {
@@ -20,6 +26,6 @@ type SequelEmployee @model(name: "employee") {
   firstName: String
   lastName: String
   address: String @default(value: "")
-  subordinates: [SequelEmployee] @hasMany
+  # subordinates: [SequelEmployee] @hasMany
   company: SequelCompany @belongsTo
 }

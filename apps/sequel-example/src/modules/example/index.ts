@@ -24,10 +24,20 @@ const resolvers = {
       return args;
     },
   },
+  SequelCompany: {
+    employees(_, __) {
+      return [];
+    }
+  },
+  SequelEmployee: {
+    company(_, __) {
+      return null;
+    }
+  }
 };
 
-function buildCompositionResolver() {
-  const resolvers = buildSequelResolvers({ typeDefs, sequelize });
+function buildCompositionResolver(caseStyle = 'camel') {
+  const resolvers = buildSequelResolvers({ typeDefs, sequelize, caseStyle });
   sequelize.sync().then(() => {
     const queryInterface = sequelize.getQueryInterface();
     for (const key of Object.keys(seedData)) {

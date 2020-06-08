@@ -12,6 +12,8 @@ directive @field(
 
 directive @primary on FIELD_DEFINITION
 directive @default(value: String) on FIELD_DEFINITION
+directive @hasOne on FIELD_DEFINITION
 directive @hasMany on FIELD_DEFINITION
 directive @belongsTo on FIELD_DEFINITION
+directive @belongsToMany(through: String) on FIELD_DEFINITION
 `;

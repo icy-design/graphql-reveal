@@ -17,7 +17,8 @@
     "graphql-sequelize": "~9.4.0",
     "pluralize": "~8.0.0",
     "sequelize": "~5.21.12",
-    "graphql-relay": "~0.6.0"
+    "graphql-relay": "~0.6.0",
+    "case": "~1.6.3"
   },
   "peerDependencies": {
     "@graphql-modules/core": "^0.7.17",
