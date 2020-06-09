@@ -1,6 +1,6 @@
 {
   "name": "@graphql-reveal/faker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Mock or extend your GraphQL Modules with faked data",
   "repository": "https://github.com/icy-design/graphql-reveal.git",
   "author": "forafish",

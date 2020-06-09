@@ -1,6 +1,6 @@
 {
   "name": "@graphql-reveal/sequel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fast database CRUD GraphQL Modules with sequelize",
   "repository": "https://github.com/icy-design/graphql-reveal.git",
   "author": "forafish",
@@ -13,12 +13,12 @@
   },
   "dependencies": {
     "camelcase": "~6.0.0",
-    "graphql-tools": "~6.0.7",
-    "graphql-sequelize": "~9.4.0",
-    "pluralize": "~8.0.0",
-    "sequelize": "~5.21.12",
+    "case": "~1.6.3",
     "graphql-relay": "~0.6.0",
-    "case": "~1.6.3"
+    "graphql-sequelize": "~9.4.0",
+    "graphql-tools": "~6.0.7",
+    "pluralize": "~8.0.0",
+    "sequelize": "~5.21.12"
   },
   "peerDependencies": {
     "@graphql-modules/core": "^0.7.17",
