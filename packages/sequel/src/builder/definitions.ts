@@ -3,6 +3,7 @@ import { getForeignKey } from '../utils';
 import { FieldUsage, TypeToUsages } from './directives';
 
 export interface ModelAssociation {
+  name: string;
   source: string;
   target: string;
   type: string;
@@ -29,7 +30,7 @@ const parseFieldType = type => {
   }
 };
 
-export function createAssociations(typeUsages: TypeToUsages, formatFieldName): ModelAssociation[] {
+export function createAssociations(typeUsages: TypeToUsages, fieldStyle = (s: string) => s): ModelAssociation[] {
   let associations:ModelAssociation[] = [];
   for (const typeName in typeUsages) {
     const type = typeUsages[typeName];
@@ -39,11 +40,12 @@ export function createAssociations(typeUsages: TypeToUsages, formatFieldName): M
         switch (directive.name) {
           case 'belongsTo':
             associations.push({
+              name: field.name,
               source: typeName,
               target: field.type,
               type: 'belongsTo',
               options: {
-                foreignKey: formatFieldName(getForeignKey(field.name)),
+                foreignKey: fieldStyle(getForeignKey(field.name)),
               },
             });
             break;
@@ -51,11 +53,12 @@ export function createAssociations(typeUsages: TypeToUsages, formatFieldName): M
           case 'hasMany':
             const from = type.directives.find(o => o.name === 'model')?.args['name'] || typeName;
             associations.push({
+              name: field.name,
               source: typeName,
               target: field.type,
               type: 'hasMany',
               options: {
-                foreignKey: formatFieldName(getForeignKey(from)),
+                foreignKey: fieldStyle(getForeignKey(from)),
               },
             });
             break;
@@ -66,13 +69,13 @@ export function createAssociations(typeUsages: TypeToUsages, formatFieldName): M
   return associations;
 }
 
-export function createDefinitions(fields: FieldUsage[], formatFieldName) {
+export function createDefinitions(fields: FieldUsage[], fieldStyle = (s: string) => s) {
   return fields.reduce((acc, field) => {
     const directives = field.directives || [];
     const primaryKey = directives.some(o => o.name === 'primary');
     const fieldType = parseFieldType(field.type);
     if (fieldType) {
-      acc[formatFieldName(field.name)] = {
+      acc[fieldStyle(field.name)] = {
         type: fieldType,
         primaryKey: primaryKey,
         field: field.name,

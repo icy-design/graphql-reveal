@@ -5,17 +5,16 @@ import { Sequelize } from 'sequelize';
 import { sequelDefinition } from './sequle_definition';
 
 export * from './builder/schema';
+export * from './utils/unique_id';
 
 class SequelDirective extends SchemaDirectiveVisitor {
 
   visitObject(type: GraphQLObjectType) {
     this.ensureFieldsWrapped(type);
-    console.log('visitObject', type, this.args);
   }
 
-  public visitFieldDefinition(field, details) {
+  public visitFieldDefinition(_, details) {
     this.ensureFieldsWrapped(details.objectType);
-    console.log('visitFieldDefinition', field, this.args);
   }
 
   ensureFieldsWrapped(objectType: GraphQLObjectType) {

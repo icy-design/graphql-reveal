@@ -1,25 +1,10 @@
-import { plural, singular } from 'pluralize';
-import camelcase from 'camelcase';
+import { singular } from 'pluralize';
 
-export const isJoinTable = (tableName, tableList) => {
-  const sides = tableName.split('_').map(plural);
-
-  if (sides.length !== 2) {
-    return false;
-  }
-
-  const [one, two] = sides;
-
-  return tableList.includes(one) && tableList.includes(two);
-};
-
-export const formatTypeName = name => {
-  return pascalCase(singular(name));
-};
-
-export const pascalCase = string => {
-  const cameled = camelcase(string);
-  return cameled.substr(0, 1).toUpperCase() + cameled.substr(1);
+export const getPrimaryKey = model => {
+  return Object.keys(model.rawAttributes).find(key => {
+    const attr = model.rawAttributes[key];
+    return attr.primaryKey;
+  });
 };
 
 export const getForeignKey = (key: string, pattern = 'Id') => {

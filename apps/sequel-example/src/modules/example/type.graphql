@@ -1,17 +1,22 @@
 type Query {
-  findSequelEmployeesByIds(ids: [ID!]): [SequelEmployee]
-  findSequelEmployees(next: ID, limit: Int): [SequelEmployee]
+  findSequelEmployees(where: SequeEmployeeFilter): [SequelEmployee]
+  fetchSequelEmployees(next: ID, limit: Int): [SequelEmployee]
   sequelEmployee(id: ID): SequelEmployee
   sequelEmployees: [SequelEmployee]
 
-  findSequelCompaniesByIds(ids: [ID!]): [SequelCompany]
-  findSequelCompanies(next: ID, limit: Int): [SequelCompany]
+  findSequelCompanies(where: SequeCompanyFilter): [SequelCompany]
+  fetchSequelCompanies(next: ID, limit: Int): [SequelCompany]
   sequelCompany(id: ID): SequelCompany
   sequelCompanies: [SequelCompany]
 }
 
 type Mutation {
-  addSequelEmployee(firstName: String!, lastName: String!): SequelEmployee!
+  createSequelEmployee(request: SequelEmployeeRequest): SequelEmployee
+  updateSequelEmployee(request: SequelEmployeeRequest): SequelEmployee
+  deleteSequelEmployee(request: SequelEmployeeRequest): SequelEmployee
+  createSequelCompany(request: SequelCompanyRequest): SequelCompany
+  updateSequelCompany(request: SequelCompanyRequest): SequelCompany
+  deleteSequelCompany(request: SequelCompanyRequest): SequelCompany
 }
 
 type SequelCompany @model(name: "company") {
@@ -28,4 +33,31 @@ type SequelEmployee @model(name: "employee") {
   address: String @default(value: "")
   # subordinates: [SequelEmployee] @hasMany
   company: SequelCompany @belongsTo
+}
+
+input SequelCompanyRequest {
+  id: ID
+  name: String!
+  industry: String
+}
+
+input SequelEmployeeRequest {
+  id: ID
+  firstName: String!
+  lastName: String!
+  address: String
+  companyId: ID
+}
+
+input SequeCompanyFilter {
+  id: ID
+  ids: [ID]
+  name: String
+}
+
+input SequeEmployeeFilter {
+  id: ID
+  ids: [ID]
+  firstName: String
+  lastName: String
 }

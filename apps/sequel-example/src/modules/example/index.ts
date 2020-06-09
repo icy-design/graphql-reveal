@@ -7,35 +7,6 @@ import { seedData } from './seed';
 
 const sequelize = new Sequelize('sqlite::memory:')
 
-const resolvers = {
-  Query: {
-    sequelCompanies(_, __) {
-      return [];
-    },
-    sequelCompany(_, { id }) {
-      return { id };
-    },
-    sequelEmployee(_, { id }) {
-      return { id };
-    }
-  },
-  Mutation: {
-    async addSequelEmployee(_, args) {
-      return args;
-    },
-  },
-  SequelCompany: {
-    employees(_, __) {
-      return [];
-    }
-  },
-  SequelEmployee: {
-    company(_, __) {
-      return null;
-    }
-  }
-};
-
 function buildCompositionResolver(caseStyle = 'camel') {
   const resolvers = buildSequelResolvers({ typeDefs, sequelize, caseStyle });
   sequelize.sync().then(() => {
@@ -53,6 +24,5 @@ export const SequelExampleModule = new GraphQLModule({
     SequelDirectiveModule.forRoot({ sequelize })
   ],
   typeDefs,
-  resolvers,
-  resolversComposition: buildCompositionResolver()
+  resolvers: buildCompositionResolver()
 });
