@@ -23,7 +23,6 @@ class SequelDirective extends SchemaDirectiveVisitor {
 
     Object.keys(fields).forEach(fieldName => {
       const field = fields[fieldName];
-      //console.log('field', field);
       const { resolve = defaultFieldResolver } = field;
       field.resolve = async function (...args) {
         return resolve.apply(this, args);

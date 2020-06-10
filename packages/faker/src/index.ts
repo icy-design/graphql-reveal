@@ -4,9 +4,11 @@ import { SchemaDirectiveVisitor } from 'graphql-tools';
 import { fakeFieldResolver } from './fake_schema';
 import { fakeDefinition } from './fake_definition';
 
+const debug = require('debug')('graphql-reveal:faker');
+
 class FakeDirective extends SchemaDirectiveVisitor {
   public visitScalar(scalar: GraphQLScalarType) {
-    console.log('#visitScalar', scalar);
+    debug('visitScalar', scalar);
   }
   public visitFieldDefinition(field: GraphQLField<any, any>) {
     field.resolve = async function (source, args, context, info) {

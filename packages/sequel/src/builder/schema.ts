@@ -9,6 +9,8 @@ import { createDefinitions, createAssociations } from './definitions';
 import { getPrimaryKey } from '../utils';
 import { uniqueId, MaxUniqueId32 } from '../utils/unique_id';
 
+const debug = require('debug')('graphql-reveal:sequel');
+
 export interface IBuildSequelOption {
   typeDefs: DocumentNode;
   sequelize: Sequelize;
@@ -17,7 +19,7 @@ export interface IBuildSequelOption {
 
 export const wrapResolver = (modelResolver) => async (root, args, context, info) => {
   const result = await modelResolver(root, args, context, info);
-  // console.log('==> resolver:', info.operation.name, result.toJ);
+  debug('resolved', info.operation.name, result);
   return result;
 };
 
@@ -32,7 +34,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       if (directive.name === 'model') {
         const tableName = directive.args.name || typeName.toLowerCase();
         const definitions = createDefinitions(type.fields, fieldStyle);
-        // console.log('model', typeName, tableName, JSON.stringify(type.fields, null, 2));
+        // debug('model', typeName, tableName, JSON.stringify(type.fields, null, 2));
         models[typeName] = sequelize.define(typeName, definitions, {
           tableName,
           timestamps: false
@@ -41,11 +43,10 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
     }
   }
   const associations = createAssociations(typeUsagesWithModel, fieldStyle);
-  // console.log('associations', JSON.stringify(associations, null, 2));
   for (const assoc of associations) {
     let { source, target, type, options } = assoc;
     options.as = assoc.name // field name as the alias of relationship
-    console.log('relationship', source, type, target, options);
+    debug('relationship', source, type, target, options);
     models[source][assoc.name] = models[source][type](models[target], options);
   }
 
@@ -67,7 +68,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
         where[priKey] = where.ids;
         delete where.ids;
       }
-      // console.log(`find${plural(queryName)}`, where);
+      debug(`find${plural(queryName)}`, where);
       const thing = await model.findAll({
         where: where,
         order: [[priKey, 'DESC']]
@@ -75,7 +76,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       return thing;
     };
     queries[`fetch${plural(typeName)}`] = async (_, { next, limit }, __) => {
-      // console.log(`fetch${plural(queryName)}`, next, limit);
+      debug(`fetch${plural(queryName)}`, next, limit);
       const priKey = getPrimaryKey(model);
       const thing = await model.findAll({
         where: {
@@ -93,7 +94,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       if (!request[priKey]) {
         request[priKey] = uniqueId();
       }
-      // console.log(`create${typeName}`, request);
+      debug(`create${typeName}`, request);
       const thing = await model.create(request);
       return thing;
     };
@@ -102,7 +103,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       const thing = await model.findOne({
         where: { [priKey]: request[priKey] },
       });
-      // console.log(`update${typeName}`, request);
+      debug(`update${typeName}`, request);
       await thing.update(request);
       return thing;
     };
@@ -158,9 +159,9 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
     }
   }
 
-  // console.log('queries', queries);
-  // console.log('mutations', mutations);
-  // console.log('types', types);
+  // debug('queries', queries);
+  // debug('mutations', mutations);
+  // debug('types', types);
 
   return { 
     Query: queries,

@@ -1,6 +1,6 @@
 {
   "name": "@graphql-reveal/sequel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fast database CRUD GraphQL Modules with sequelize",
   "repository": "https://github.com/icy-design/graphql-reveal.git",
   "author": "forafish",
@@ -18,7 +18,8 @@
     "graphql-sequelize": "~9.4.0",
     "graphql-tools": "~6.0.7",
     "pluralize": "~8.0.0",
-    "sequelize": "~5.21.12"
+    "sequelize": "~5.21.12",
+    "debug": "~4.1.1"
   },
   "peerDependencies": {
     "@graphql-modules/core": "^0.7.17",

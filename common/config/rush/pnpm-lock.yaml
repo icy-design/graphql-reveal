@@ -1,6 +1,7 @@
 dependencies:
   '@graphql-modules/core': 0.7.17_6379337881fa15df4120150a5b05f9dd
   '@graphql-modules/di': 0.7.17_reflect-metadata@0.1.13
+  '@graphql-reveal/faker': 0.0.2_5beb1972013b3d1529fd447ef1ec97ba
   '@grpc/proto-loader': 0.5.4
   '@rush-temp/fake-example': 'file:projects/fake-example.tgz'
   '@rush-temp/faker': 'file:projects/faker.tgz_reflect-metadata@0.1.13'
@@ -17,6 +18,7 @@ dependencies:
   cookie: 0.4.1
   cookie-parser: 1.4.5
   copyfiles: 2.3.0
+  debug: 4.1.1
   dotenv: 8.2.0
   express: 4.17.1
   faker: 4.1.0
@@ -567,6 +569,23 @@ packages:
       reflect-metadata: ^0.1.12
     resolution:
       integrity: sha512-Lq5sd/3RO+bNb8wVnAg43LWbwrqD57D0AVEqZlqiTwUj1f0mITtQdGMRN7g2sG79U7ngoaQx8VK/IiKh8E1OFQ==
+  /@graphql-reveal/faker/0.0.2_5beb1972013b3d1529fd447ef1ec97ba:
+    dependencies:
+      '@graphql-modules/core': 0.7.17_6379337881fa15df4120150a5b05f9dd
+      '@graphql-modules/di': 0.7.17_reflect-metadata@0.1.13
+      '@graphql-toolkit/common': 0.10.7_graphql@14.6.0
+      '@graphql-toolkit/schema-merging': 0.10.7_graphql@14.6.0
+      faker: 4.1.0
+      graphql: 14.6.0
+      graphql-tools: 5.0.0_graphql@14.6.0
+      moment: 2.24.0
+    dev: false
+    peerDependencies:
+      '@graphql-modules/core': ^0.7.17
+      '@graphql-modules/di': ^0.7.17
+      graphql: ^14.1.1 || ^15.0.0
+    resolution:
+      integrity: sha512-5pxitj9gSAicPrRhNCkctNcc7hDybcCpbE3fF/oGxXNI0MvwrtSHP6fjIUzyMKEaXVzh3cpxut0DNuA6rUoGtg==
   /@graphql-toolkit/common/0.10.6_graphql@14.6.0:
     dependencies:
       aggregate-error: 3.0.1
@@ -5506,6 +5525,7 @@ packages:
     dependencies:
       '@graphql-modules/core': 0.7.17_6379337881fa15df4120150a5b05f9dd
       '@graphql-modules/di': 0.7.17_reflect-metadata@0.1.13
+      '@graphql-reveal/faker': 0.0.2_5beb1972013b3d1529fd447ef1ec97ba
       '@grpc/proto-loader': 0.5.4
       '@types/node': 11.15.14
       apollo-datasource-grpc: 1.0.0
@@ -5530,7 +5550,7 @@ packages:
     dev: false
     name: '@rush-temp/fake-example'
     resolution:
-      integrity: sha512-THXDYA96OcCqRpeWVhZFmsv8LNbvFnz1fGK1lZfm/yXI9dpTYhEFGUcjoTyfR3iZc1kHZRV0AXkQiryrASiVHQ==
+      integrity: sha512-PFCAOSr6TCZXySVIsMxBtoy5qf0r52bHo9P+cEASMLI+nm+JGn+Yzw8VXkweNwCxY/8X2VA5ZSiN1w0Zz6tksw==
       tarball: 'file:projects/fake-example.tgz'
     version: 0.0.0
   'file:projects/faker.tgz_reflect-metadata@0.1.13':
@@ -5597,6 +5617,7 @@ packages:
       '@types/node': 11.15.14
       camelcase: 6.0.0
       case: 1.6.3
+      debug: 4.1.1
       graphql: 14.6.0
       graphql-relay: 0.6.0_graphql@14.6.0
       graphql-sequelize: 9.4.0_8ba3af34c00c89929bef54a4b6184412
@@ -5613,13 +5634,14 @@ packages:
     peerDependencies:
       reflect-metadata: '*'
     resolution:
-      integrity: sha512-4hw8PRqpxnkSQo4J7WchtTTj9U5Gx/0jd94FLtkdV4aQXnX5EWmOZ8BNAvrezC6MXpF46ht0vPXa8268VOVv7A==
+      integrity: sha512-D1KhpTtP6w4pbxlSWXSx9S8JowVUumv0SAicBdYrTDOodipaNO1UhWOeVXP/HioySkiBHTOMenGSVwUxWQxi4w==
       tarball: 'file:projects/sequel.tgz'
     version: 0.0.0
 registry: ''
 specifiers:
   '@graphql-modules/core': ^0.7.17
   '@graphql-modules/di': ^0.7.17
+  '@graphql-reveal/faker': ^0.0.2
   '@grpc/proto-loader': ^0.5.3
   '@rush-temp/fake-example': 'file:./projects/fake-example.tgz'
   '@rush-temp/faker': 'file:./projects/faker.tgz'
@@ -5636,6 +5658,7 @@ specifiers:
   cookie: ^0.4.0
   cookie-parser: ^1.4.4
   copyfiles: ^2.1.1
+  debug: ~4.1.1
   dotenv: ^8.2.0
   express: ^4.17.1
   faker: 4.1.0
