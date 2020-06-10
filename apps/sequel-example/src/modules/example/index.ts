@@ -3,7 +3,7 @@ import { GraphQLModule } from '@graphql-modules/core';
 import { SequelDirectiveModule, buildSequelResolvers } from '@graphql-reveal/sequel';
 import { Sequelize } from 'sequelize';
 import * as typeDefs from './type.graphql';
-import { seedData } from './seed';
+import { Seeds }from './seed';
 
 const sequelize = new Sequelize('sqlite::memory:')
 
@@ -11,8 +11,8 @@ function buildCompositionResolver(caseStyle = 'camel') {
   const resolvers = buildSequelResolvers({ typeDefs, sequelize, caseStyle });
   sequelize.sync().then(() => {
     const queryInterface = sequelize.getQueryInterface();
-    for (const key of Object.keys(seedData)) {
-      queryInterface.bulkInsert(key, seedData[key]);
+    for (const key of Object.keys(Seeds)) {
+      queryInterface.bulkInsert(key, Seeds[key]);
     }
   });
   return resolvers;

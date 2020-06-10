@@ -1,6 +1,6 @@
-//import * as faker from 'faker';
-const faker = require('faker');
 import moment from 'moment';
+
+const faker = require('faker');
 
 export function getRandomInt(min:number, max:number) {
   return faker.random.number({min, max});

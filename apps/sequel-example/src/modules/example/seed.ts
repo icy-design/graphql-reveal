@@ -1,46 +1,32 @@
-export const seedData = {
-  'company': [
-    { id: 1591670061401, name: 'Accounting Company', industry: 'Accounting' },
-    { id: 1591670061402, name: 'Accumulation Company', industry: 'Accumulation' },
-    { id: 1591670061403, name: 'Animation Company', industry: 'Animation' },
-    { id: 1591670061404, name: 'Automotive Company', industry: 'Automotive' },
-    { id: 1591670061405, name: 'Aviation Company', industry: 'Aviation' },
-    { id: 1591670061406, name: 'Computer Company', industry: 'Computer' },
-    { id: 1591670061407, name: 'Construction Company', industry: 'Construction' },
-    { id: 1591670061408, name: 'Cosmetics Company', industry: 'Cosmetics' },
-    { id: 1591670061409, name: 'Entertainment Company', industry: 'Entertainment' },
-    { id: 1591670061410, name: 'Environment Company', industry: 'Environment' },
-    { id: 1591670061411, name: 'Financial Company', industry: 'Financial' },
-    { id: 1591670061412, name: 'Food Company', industry: 'Food' },
-    { id: 1591670061413, name: 'Furniture Company', industry: 'Furniture' },
-    { id: 1591670061414, name: 'Health Company', industry: 'Health' },
-    { id: 1591670061415, name: 'Hospital Company', industry: 'Hospital' },
-    { id: 1591670061416, name: 'Information Company', industry: 'Information' },
-    { id: 1591670061417, name: 'Internet Company', industry: 'Internet' },
-    { id: 1591670061418, name: 'Investment Company', industry: 'Investment' },
-    { id: 1591670061419, name: 'Logistics Company', industry: 'Logistics' },
-    { id: 1591670061420, name: 'Marketing Company', industry: 'Marketing' },
-  ],
-  'employee': [
-    { id: 1591670061501, firstName: 'Aaron', lastName: 'Smith', address: 'Harpenden York City', owner: 1591670061401, employerId: 1591670061401 },
-    { id: 1591670061502, firstName: 'Adam', lastName: 'Cruise', address: 'Haslemere City', supervisorId: 1591670061501, employerId: 1591670061401 },
-    { id: 1591670061503, firstName: 'David', lastName: 'Lucy', address: 'Ilford City', owner: 1591670061402, employerId: 1591670061402 },
-    { id: 1591670061504, firstName: 'Destiny', lastName: 'Johnson', address: 'Abingdon City', supervisorId: 1591670061502, employerId: 1591670061402 },
-    { id: 1591670061505, firstName: 'Diana', lastName: 'Wilson', address: 'Alsager City', owner: 1591670061403, employerId: 1591670061403 },
-    { id: 1591670061506, firstName: 'Emily', lastName: 'Thompson', address: 'Bicester City', employerId: 1591670061403 },
-    { id: 1591670061507, firstName: 'Erica', lastName: 'Gonzalez', address: 'Braintree City', owner: 1591670061404, employerId: 1591670061404 },
-    { id: 1591670061508, firstName: 'Eva', lastName: 'Perez', address: 'Chorleywood City', employerId: 1591670061404 },
-    { id: 1591670061509, firstName: 'Giovanni', lastName: 'Hall', address: 'Cleethorpes City', owner: 1591670061405, employerId: 1591670061405 },
-    { id: 1591670061510, firstName: 'Grace', lastName: 'Young', address: 'Colne City', employerId: 1591670061405 },
-    { id: 1591670061511, firstName: 'Isabelle', lastName: 'Wright', address: 'Kirkham City', owner: 1591670061406, employerId: 1591670061406 },
-    { id: 1591670061512, firstName: 'Ivan', lastName: 'Scott', address: 'Ledbury City', employerId: 1591670061406 },
-    { id: 1591670061513, firstName: 'Jade', lastName: 'Baker', address: 'Lostwithiel City', owner: 1591670061407, employerId: 1591670061407 },
-    { id: 1591670061514, firstName: 'Julian', lastName: 'Turner', address: 'Mere City', employerId: 1591670061407 },
-    { id: 1591670061515, firstName: 'Katie', lastName: 'Flores', address: 'Minehead City', owner: 1591670061408, employerId: 1591670061408 },
-    { id: 1591670061516, firstName: 'Kenneth', lastName: 'Morris', address: 'Newent City', employerId: 1591670061408 },
-    { id: 1591670061517, firstName: 'Laura', lastName: 'Rivera', address: 'Pershore City', owner: 1591670061409, employerId: 1591670061409 },
-    { id: 1591670061518, firstName: 'Naomi', lastName: 'Morgan', address: 'Rotherham City', employerId: 1591670061409 },
-    { id: 1591670061519, firstName: 'Oliver', lastName: 'Bailey', address: 'Silloth City', owner: 1591670061410, employerId: 1591670061410 },
-    { id: 1591670061520, firstName: 'Oscar', lastName: 'Howard', address: 'Southport City', employerId: 1591670061410 },
-  ]
-};
+import { range } from 'lodash';
+
+const faker = require('faker');
+
+const Count = 5;
+const NumCompanies = 20;
+const NumEmployees = NumCompanies * Count;
+
+const companyId = 1591670061401;
+const companies = range(NumCompanies).map(i => {
+  return {
+    id: companyId + i,
+    name: faker.company.companyName(),
+    phrase: faker.company.catchPhrase()
+  };
+});
+
+const employeeId = 1591670061501;
+const employees = range(NumEmployees).map(i => {
+  const company = companies[Math.floor(i / 5)];
+  return {
+    id: employeeId + i,
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    address: faker.address.city(),
+    owner: i % Count === 0? company.id : null, // for every counted
+    employerId: company.id,
+    supervisorId: i % Count !== 0? employeeId + i - (i % Count) : null
+  };
+});
+
+export const Seeds = { company: companies, employee: employees }
