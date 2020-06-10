@@ -43,7 +43,7 @@ export function createAssociations(typeUsages: TypeToUsages, fieldStyle = (s: st
               name: field.name,
               source: typeName,
               target: field.type,
-              type: 'belongsTo',
+              type: directive.name,
               options: {
                 foreignKey: fieldStyle(getForeignKey(field.name)),
               },
@@ -56,7 +56,7 @@ export function createAssociations(typeUsages: TypeToUsages, fieldStyle = (s: st
               name: field.name,
               source: typeName,
               target: field.type,
-              type: 'hasMany',
+              type: directive.name,
               options: {
                 foreignKey: fieldStyle(getForeignKey(from)),
               },

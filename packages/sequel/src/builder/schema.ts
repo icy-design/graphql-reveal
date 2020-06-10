@@ -16,8 +16,8 @@ export interface IBuildSequelOption {
 }
 
 export const wrapResolver = (modelResolver) => async (root, args, context, info) => {
-  // console.log('==> resolver operation:', info.operation.name);
   const result = await modelResolver(root, args, context, info);
+  console.log('==> resolver:', info.operation.name, result);
   return result;
 };
 
@@ -44,7 +44,9 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
   // console.log('associations', JSON.stringify(associations, null, 2));
   for (const assoc of associations) {
     const { source, target, type, options } = assoc;
+    console.log('relationship', source, target, type, options);
     models[source][target] = models[source][type](models[target], options);
+    console.log('###', models[source][target]);
   }
 
   const queries = {};
@@ -116,6 +118,15 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
 
     // types resolvers
     types[typeName] = {};
+
+    // hasOne association
+    const hasOne = associations
+      .filter(({ type }) => type === 'hasOne')
+      .filter(({ source }) => source === key);
+    for (const assoc of hasOne) {
+      const assocModel = model[assoc.target]
+      types[typeName][assoc.name] = wrapResolver(resolver(assocModel))
+    }
 
     // hasMany association
     const hasMany = associations
