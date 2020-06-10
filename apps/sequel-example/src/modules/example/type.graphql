@@ -23,7 +23,8 @@ type SequelCompany @model(name: "company") {
   id: ID! @primary
   name: String
   industry: String
-  employees: [SequelEmployee] @hasMany
+  owner: SequelEmployee @hasOne(foreignKey: "owner")
+  employees: [SequelEmployee] @hasMany(foreignKey: "employerId")
 }
 
 type SequelEmployee @model(name: "employee") {

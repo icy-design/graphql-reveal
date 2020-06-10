@@ -2,7 +2,7 @@ import { GraphQLObjectType, defaultFieldResolver } from 'graphql';
 import { GraphQLModule } from '@graphql-modules/core';
 import { SchemaDirectiveVisitor } from 'graphql-tools';
 import { Sequelize } from 'sequelize';
-import { sequelDefinition } from './sequle_definition';
+import { sequelTypes } from './types';
 
 export * from './builder/schema';
 export * from './utils/unique_id';
@@ -37,7 +37,7 @@ export interface ISequelModuleConfig {
 }
 
 export const SequelDirectiveModule:GraphQLModule = new GraphQLModule<ISequelModuleConfig>({
-  typeDefs: sequelDefinition,
+  typeDefs: sequelTypes,
   schemaDirectives: {
     model: SequelDirective
   }

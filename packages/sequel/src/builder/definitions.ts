@@ -39,27 +39,29 @@ export function createAssociations(typeUsages: TypeToUsages, fieldStyle = (s: st
       for (const directive of directives) {
         switch (directive.name) {
           case 'belongsTo':
+            if (!directive.args.foreignKey) {
+              directive.args.foreignKey = fieldStyle(getForeignKey(field.name));
+            }
             associations.push({
               name: field.name,
               source: typeName,
               target: field.type,
               type: directive.name,
-              options: {
-                foreignKey: fieldStyle(getForeignKey(field.name)),
-              },
+              options: directive.args,
             });
             break;
           case 'hasOne':
           case 'hasMany':
-            const from = type.directives.find(o => o.name === 'model')?.args['name'] || typeName;
+            if (!directive.args.foreignKey) {
+              const from = type.directives.find(o => o.name === 'model')?.args['name'] || typeName;
+              directive.args.foreignKey = fieldStyle(getForeignKey(from));
+            }
             associations.push({
               name: field.name,
               source: typeName,
               target: field.type,
               type: directive.name,
-              options: {
-                foreignKey: fieldStyle(getForeignKey(from)),
-              },
+              options: directive.args,
             });
             break;
         }

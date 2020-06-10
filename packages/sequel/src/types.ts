@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const sequelDefinition = gql`
+export const sequelTypes = gql`
 directive @model(
   name: String # the name of model
   primary: String = "id" # primary key field
@@ -12,8 +12,8 @@ directive @field(
 
 directive @primary on FIELD_DEFINITION
 directive @default(value: String) on FIELD_DEFINITION
-directive @hasOne on FIELD_DEFINITION
-directive @hasMany on FIELD_DEFINITION
-directive @belongsTo on FIELD_DEFINITION
+directive @hasOne(sourceKey: String, foreignKey: String) on FIELD_DEFINITION
+directive @hasMany(sourceKey: String, foreignKey: String) on FIELD_DEFINITION
+directive @belongsTo(foreignKey: String) on FIELD_DEFINITION
 directive @belongsToMany(through: String) on FIELD_DEFINITION
 `;

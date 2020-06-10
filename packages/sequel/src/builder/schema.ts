@@ -17,7 +17,7 @@ export interface IBuildSequelOption {
 
 export const wrapResolver = (modelResolver) => async (root, args, context, info) => {
   const result = await modelResolver(root, args, context, info);
-  console.log('==> resolver:', info.operation.name, result);
+  // console.log('==> resolver:', info.operation.name, result.toJ);
   return result;
 };
 
@@ -43,10 +43,10 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
   const associations = createAssociations(typeUsagesWithModel, fieldStyle);
   // console.log('associations', JSON.stringify(associations, null, 2));
   for (const assoc of associations) {
-    const { source, target, type, options } = assoc;
-    console.log('relationship', source, target, type, options);
-    models[source][target] = models[source][type](models[target], options);
-    console.log('###', models[source][target]);
+    let { source, target, type, options } = assoc;
+    options.as = assoc.name // field name as the alias of relationship
+    console.log('relationship', source, type, target, options);
+    models[source][assoc.name] = models[source][type](models[target], options);
   }
 
   const queries = {};
@@ -124,7 +124,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       .filter(({ type }) => type === 'hasOne')
       .filter(({ source }) => source === key);
     for (const assoc of hasOne) {
-      const assocModel = model[assoc.target]
+      const assocModel = model[assoc.name]
       types[typeName][assoc.name] = wrapResolver(resolver(assocModel))
     }
 
@@ -133,7 +133,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       .filter(({ type }) => type === 'hasMany')
       .filter(({ source }) => source === key);
     for (const assoc of hasMany) {
-      const assocModel = model[assoc.target]
+      const assocModel = model[assoc.name]
       types[typeName][assoc.name] = wrapResolver(resolver(assocModel))
     }
 
@@ -142,7 +142,7 @@ export const buildSequelResolvers = ({ typeDefs, sequelize, caseStyle }: IBuildS
       .filter(({ type }) => type === 'belongsTo')
       .filter(({ source }) => source === key);
     for (const assoc of belongsTo) {
-      const assocModel = model[assoc.target]
+      const assocModel = model[assoc.name]
       types[typeName][assoc.name] = wrapResolver(resolver(assocModel))
     }
 
