@@ -42,6 +42,7 @@ export function createAssociations(typeUsages: TypeToUsages, fieldStyle = (s: st
             if (!directive.args.foreignKey) {
               directive.args.foreignKey = fieldStyle(getForeignKey(field.name));
             }
+            directive.args.constraints = false; // avoid cyclic relationship
             associations.push({
               name: field.name,
               source: typeName,
@@ -56,6 +57,7 @@ export function createAssociations(typeUsages: TypeToUsages, fieldStyle = (s: st
               const from = type.directives.find(o => o.name === 'model')?.args['name'] || typeName;
               directive.args.foreignKey = fieldStyle(getForeignKey(from));
             }
+            directive.args.constraints = false; // avoid cyclic relationship
             associations.push({
               name: field.name,
               source: typeName,

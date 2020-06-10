@@ -14,12 +14,12 @@
   "dependencies": {
     "camelcase": "~6.0.0",
     "case": "~1.6.3",
+    "debug": "~4.1.1",
     "graphql-relay": "~0.6.0",
     "graphql-sequelize": "~9.4.0",
     "graphql-tools": "~6.0.7",
     "pluralize": "~8.0.0",
-    "sequelize": "~5.21.12",
-    "debug": "~4.1.1"
+    "sequelize": "~5.21.12"
   },
   "peerDependencies": {
     "@graphql-modules/core": "^0.7.17",

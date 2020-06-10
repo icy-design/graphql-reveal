@@ -23,9 +23,9 @@ export const seedData = {
   ],
   'employee': [
     { id: 1591670061501, firstName: 'Aaron', lastName: 'Smith', address: 'Harpenden York City', owner: 1591670061401, employerId: 1591670061401 },
-    { id: 1591670061502, firstName: 'Adam', lastName: 'Cruise', address: 'Haslemere City', employerId: 1591670061401 },
+    { id: 1591670061502, firstName: 'Adam', lastName: 'Cruise', address: 'Haslemere City', supervisorId: 1591670061501, employerId: 1591670061401 },
     { id: 1591670061503, firstName: 'David', lastName: 'Lucy', address: 'Ilford City', owner: 1591670061402, employerId: 1591670061402 },
-    { id: 1591670061504, firstName: 'Destiny', lastName: 'Johnson', address: 'Abingdon City', employerId: 1591670061402 },
+    { id: 1591670061504, firstName: 'Destiny', lastName: 'Johnson', address: 'Abingdon City', supervisorId: 1591670061502, employerId: 1591670061402 },
     { id: 1591670061505, firstName: 'Diana', lastName: 'Wilson', address: 'Alsager City', owner: 1591670061403, employerId: 1591670061403 },
     { id: 1591670061506, firstName: 'Emily', lastName: 'Thompson', address: 'Bicester City', employerId: 1591670061403 },
     { id: 1591670061507, firstName: 'Erica', lastName: 'Gonzalez', address: 'Braintree City', owner: 1591670061404, employerId: 1591670061404 },

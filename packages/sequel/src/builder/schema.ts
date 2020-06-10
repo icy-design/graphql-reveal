@@ -19,7 +19,7 @@ export interface IBuildSequelOption {
 
 export const wrapResolver = (modelResolver) => async (root, args, context, info) => {
   const result = await modelResolver(root, args, context, info);
-  debug('resolved', info.operation.name, result);
+  debug('resolved', info.operation.name, JSON.stringify(result));
   return result;
 };
 

@@ -32,8 +32,9 @@ type SequelEmployee @model(name: "employee") {
   firstName: String
   lastName: String
   address: String @default(value: "")
-  # subordinates: [SequelEmployee] @hasMany
-  company: SequelCompany @belongsTo
+  company: SequelCompany @belongsTo(foreignKey: employerId)
+  # supervisor: SequelEmployee @belongsTo(foreignKey: supervisorId)
+  subordinates: [SequelEmployee] @hasMany(foreignKey: "supervisorId")
 }
 
 input SequelCompanyRequest {
@@ -47,7 +48,8 @@ input SequelEmployeeRequest {
   firstName: String!
   lastName: String!
   address: String
-  companyId: ID
+  owner: ID
+  employerId: ID
 }
 
 input SequeCompanyFilter {
