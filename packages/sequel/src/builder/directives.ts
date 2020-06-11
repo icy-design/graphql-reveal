@@ -5,6 +5,7 @@ export type DirectiveUsage = { name: string; args: DirectiveArgs };
 export type FieldUsage = {
   name: string;
   type: string;
+  definition: String;
   isList: boolean;
   nonNull: boolean;
   directives?: DirectiveUsage[]
@@ -61,6 +62,10 @@ function parseFieldTypeValue(type: TypeNode, isList = false, nonNull = false): a
 export function getTypesWithDirectives(documentNode: DocumentNode): TypeToUsages {
   const result: TypeToUsages = {};
   const allTypes = documentNode.definitions.filter(isTypeWithDirectives);
+  const allDefinitions = documentNode.definitions.reduce((result, def:any) => {
+    result[def.name.value] = def.kind;
+    return result;
+  }, {});
 
   for (const type of allTypes) {
     const typeName = type.name.value;
@@ -72,7 +77,8 @@ export function getTypesWithDirectives(documentNode: DocumentNode): TypeToUsages
 
       fields[fieldName] = {
         name: fieldName,
-        ...fieldType
+        definition: allDefinitions[fieldType.type],
+        ...fieldType,
       }
 
       if (field.directives && field.directives.length > 0) {

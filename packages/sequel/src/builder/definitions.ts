@@ -10,8 +10,8 @@ export interface ModelAssociation {
   options?: any;
 }
 
-const parseFieldType = type => {
-  const c = type.toLowerCase();
+const parseFieldType = (field) => {
+  const c = field.type.toLowerCase();
   switch (c) {
     case 'id':
       return DataTypes.STRING;
@@ -26,6 +26,10 @@ const parseFieldType = type => {
     case 'object':
       return DataTypes.JSON;
     default:
+      switch (field.definition) {
+        case 'EnumTypeDefinition':
+          return DataTypes.STRING;
+      }
       return null;
   }
 };
@@ -77,7 +81,7 @@ export function createDefinitions(fields: FieldUsage[], fieldStyle = (s: string)
   return fields.reduce((acc, field) => {
     const directives = field.directives || [];
     const primaryKey = directives.some(o => o.name === 'primary');
-    const fieldType = parseFieldType(field.type);
+    const fieldType = parseFieldType(field);
     if (fieldType) {
       acc[fieldStyle(field.name)] = {
         type: fieldType,

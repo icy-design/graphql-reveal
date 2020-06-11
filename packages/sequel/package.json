@@ -1,6 +1,6 @@
 {
   "name": "@graphql-reveal/sequel",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Fast database CRUD GraphQL Modules with sequelize",
   "repository": "https://github.com/icy-design/graphql-reveal.git",
   "author": "forafish",

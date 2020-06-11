@@ -25,6 +25,7 @@ type SequelCompany @model(name: "company") {
   phrase: String
   owner: SequelEmployee @hasOne(foreignKey: "owner")
   employees: [SequelEmployee] @hasMany(foreignKey: "employerId")
+  status: SequelCompanyStatus
 }
 
 type SequelEmployee @model(name: "employee") {
@@ -37,10 +38,17 @@ type SequelEmployee @model(name: "employee") {
   subordinates: [SequelEmployee] @hasMany(foreignKey: "supervisorId")
 }
 
+enum SequelCompanyStatus {
+  INVALID
+  CONFIRM
+  PROVEN
+}
+
 input SequelCompanyRequest {
   id: ID
   name: String!
   phrase: String
+  status: SequelCompanyStatus
 }
 
 input SequelEmployeeRequest {
