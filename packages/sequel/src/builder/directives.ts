@@ -63,7 +63,9 @@ export function getTypesWithDirectives(documentNode: DocumentNode): TypeToUsages
   const result: TypeToUsages = {};
   const allTypes = documentNode.definitions.filter(isTypeWithDirectives);
   const allDefinitions = documentNode.definitions.reduce((result, def:any) => {
-    result[def.name.value] = def.kind;
+    if (def.name && def.name.value) {
+      result[def.name.value] = def.kind;
+    }
     return result;
   }, {});
 
