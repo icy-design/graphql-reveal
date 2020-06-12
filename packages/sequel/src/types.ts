@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 
 export const sequelTypes = gql`
+scalar Date
 directive @model(
   name: String # the name of model
   primary: String = "id" # primary key field

@@ -23,6 +23,8 @@ const parseFieldType = (field) => {
       return DataTypes.STRING;
     case 'boolean':
       return DataTypes.BOOLEAN;
+    case 'date':
+      return DataTypes.DATE;
     case 'object':
       return DataTypes.JSON;
     default:

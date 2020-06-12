@@ -27,6 +27,7 @@ type SequelCompany @model(name: "company") {
   employees: [SequelEmployee] @hasMany(foreignKey: "employerId")
   status: SequelCompanyStatus
   info: ExernalInfo @field(type: ID)
+  foundedAt: Date
 }
 
 type SequelEmployee @model(name: "employee") {
