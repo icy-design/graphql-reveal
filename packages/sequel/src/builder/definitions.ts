@@ -30,7 +30,7 @@ const parseFieldType = (field) => {
       switch (field.definition) {
         case 'EnumTypeDefinition':
           return defType || DataTypes.STRING;
-        case 'ObjectTypeDefinition':
+        default:
           return defType? parseFieldType({ type: defType }) : null;
       }
       return null;
