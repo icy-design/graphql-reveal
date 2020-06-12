@@ -26,6 +26,7 @@ type SequelCompany @model(name: "company") {
   owner: SequelEmployee @hasOne(foreignKey: "owner")
   employees: [SequelEmployee] @hasMany(foreignKey: "employerId")
   status: SequelCompanyStatus
+  info: ExernalInfo @field(type: "string")
 }
 
 type SequelEmployee @model(name: "employee") {
@@ -36,6 +37,10 @@ type SequelEmployee @model(name: "employee") {
   company: SequelCompany @belongsTo(foreignKey: employerId)
   # supervisor: SequelEmployee @belongsTo(foreignKey: supervisorId)
   subordinates: [SequelEmployee] @hasMany(foreignKey: "supervisorId")
+}
+
+type ExernalInfo {
+  id: ID
 }
 
 enum SequelCompanyStatus {

@@ -8,6 +8,7 @@ directive @model(
 
 directive @field(
   name: String # the name of model field
+  type: String # the type of model field
 ) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
 
 directive @primary on FIELD_DEFINITION

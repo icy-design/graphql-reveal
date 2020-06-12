@@ -11,7 +11,8 @@ const companies = range(NumCompanies).map(i => {
   return {
     id: companyId + i,
     name: faker.company.companyName(),
-    phrase: faker.company.catchPhrase()
+    phrase: faker.company.catchPhrase(),
+    info: 999
   };
 });
 

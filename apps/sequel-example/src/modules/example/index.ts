@@ -1,4 +1,5 @@
 import 'graphql-import-node';
+import { merge } from 'lodash';
 import { GraphQLModule } from '@graphql-modules/core';
 import { SequelDirectiveModule, buildSequelResolvers } from '@graphql-reveal/sequel';
 import { Sequelize } from 'sequelize';
@@ -6,6 +7,14 @@ import * as typeDefs from './type.graphql';
 import { Seeds }from './seed';
 
 const sequelize = new Sequelize('sqlite::memory:')
+
+const externResolvers = {
+  SequelCompany: {
+    info: (_, __, ___) => {
+      return { id: _.info };
+    },
+  }
+};
 
 function buildCompositionResolver(caseStyle = 'camel') {
   const resolvers = buildSequelResolvers({ typeDefs, sequelize, caseStyle });
@@ -15,7 +24,7 @@ function buildCompositionResolver(caseStyle = 'camel') {
       queryInterface.bulkInsert(key, Seeds[key]);
     }
   });
-  return resolvers;
+  return merge(resolvers, externResolvers);
 }
 
 export const SequelExampleModule = new GraphQLModule({

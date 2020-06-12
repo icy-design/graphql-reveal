@@ -20,15 +20,18 @@ const parseFieldType = (field) => {
     case 'float':
       return DataTypes.DECIMAL;
     case 'string':
-      return DataTypes.TEXT;
+      return DataTypes.STRING;
     case 'boolean':
       return DataTypes.BOOLEAN;
     case 'object':
       return DataTypes.JSON;
     default:
+      const defType = field.directives?.find(o => o.name === 'field')?.args['type'];
       switch (field.definition) {
         case 'EnumTypeDefinition':
-          return DataTypes.STRING;
+          return defType || DataTypes.STRING;
+        case 'ObjectTypeDefinition':
+          return defType? parseFieldType({ type: defType }) : null;
       }
       return null;
   }
